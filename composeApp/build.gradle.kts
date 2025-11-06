@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -41,10 +42,7 @@ kotlin {
     }
     
     sourceSets {
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-        }
+
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -54,13 +52,47 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            //ktor client for networking
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.logging)
+
+            //coroutines
+            implementation(libs.kotlinx.coroutines.core)
+
+            //koin
+            implementation(libs.koin.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+        androidMain.dependencies {
+            implementation(compose.preview)
+            implementation(libs.androidx.activity.compose)
+            //ktor client for networking
+            implementation(libs.ktor.client.android)
+            //croutines
+            implementation(libs.kotlinx.coroutines.android)
+            //koin
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+        }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
+
+            //ktor client for networking
+            implementation(libs.ktor.client.cio)
+        }
+        iosMain.dependencies {
+            //ktor client for networking
+            implementation(libs.ktor.client.darwin)
+        }
+        jsMain.dependencies {
+            //ktor client for networking
+            implementation(libs.ktor.client.js)
         }
     }
 }
