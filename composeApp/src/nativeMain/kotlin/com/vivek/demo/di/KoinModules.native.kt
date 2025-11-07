@@ -1,7 +1,17 @@
 package com.vivek.demo.di
 
+import com.vivek.demo.ui.MainViewModel
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 import org.koin.core.module.Module
+import org.koin.dsl.module
 
-actual fun sharedViewModelModule(): org.koin.core.module.Module {
-    TODO("Not yet implemented")
+private val mainViewModelModule = module {
+    single { MainViewModel(get()) }
+}
+
+actual fun sharedViewModelModule(): Module = mainViewModelModule
+
+object ProvideMainViewModel : KoinComponent {
+    fun getMainViewModel(): MainViewModel = get()
 }

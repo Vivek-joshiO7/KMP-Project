@@ -11,13 +11,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.vivek.demo.Greeting
+import com.vivek.demo.domain.model.News
+import com.vivek.demo.ui.MainViewModel
 import kmp_project.composeapp.generated.resources.Res
 import kmp_project.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
@@ -26,6 +30,9 @@ import org.jetbrains.compose.resources.painterResource
 fun NewsScreen() {
 
     var showContent by remember { mutableStateOf(false) }
+    val viewModel = viewModel<MainViewModel>()
+
+    val newsList: List<News> by viewModel.dataNews.collectAsState()
 
     Column(
         modifier = Modifier
@@ -44,7 +51,7 @@ fun NewsScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Image(painterResource(Res.drawable.compose_multiplatform), null)
-                Text("Compose: $greeting")
+                Text("Compose: ${newsList[0]}")
             }
         }
     }

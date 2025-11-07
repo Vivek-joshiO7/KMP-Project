@@ -9,6 +9,3 @@ fun initKoin(appDeclaration : KoinAppDeclaration = {}) = startKoin {
         sharedViewModelModule()
     )
 }
-
-// For non-Android platforms (iOS, Desktop, Web)
-fun initKoin() = initKoin {}
