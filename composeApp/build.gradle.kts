@@ -58,13 +58,18 @@ kotlin {
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.auth)
 
             //coroutines
             implementation(libs.kotlinx.coroutines.core)
 
+            //viewmodel
+            api(libs.androidx.lifecycle.viewmodel)
+
             //koin
             api(libs.koin.core)
             implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewModel)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -74,7 +79,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             //ktor client for networking
             implementation(libs.ktor.client.android)
-            //croutines
+            //coroutines
             implementation(libs.kotlinx.coroutines.android)
             //koin
             implementation(libs.koin.android)
@@ -86,6 +91,9 @@ kotlin {
 
             //ktor client for networking
             implementation(libs.ktor.client.cio)
+
+            //viewmodel
+            implementation(libs.kotlinx.coroutinesSwing)
         }
         iosMain.dependencies {
             //ktor client for networking

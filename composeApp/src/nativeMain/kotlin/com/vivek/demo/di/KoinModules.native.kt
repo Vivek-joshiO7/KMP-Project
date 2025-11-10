@@ -12,6 +12,7 @@ private val mainViewModelModule = module {
 
 actual fun sharedViewModelModule(): Module = mainViewModelModule
 
+//this is to provide ViewModel instance in Native code not using in shared code for now
 object ProvideMainViewModel : KoinComponent {
     fun getMainViewModel(): MainViewModel = get()
 }

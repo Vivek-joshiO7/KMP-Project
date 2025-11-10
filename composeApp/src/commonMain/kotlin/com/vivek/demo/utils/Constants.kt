@@ -2,7 +2,7 @@ package com.vivek.demo.utils
 
 object Constants {
 
-    const val BASE_URL = "https://newsapi.org/"
+    const val BASE_URL = "newsapi.org"
 
     const val EVERYTHING_ENDPOINT = "/v2/everything"
 

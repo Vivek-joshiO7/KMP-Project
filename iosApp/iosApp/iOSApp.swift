@@ -3,9 +3,9 @@ import shared
 
 @main
 struct iOSApp: App {
-    init(){
-    KoinIOSKt.doInitKoin()
-    }
+        startKoin {
+            modules(koinModule,sharedViewModelModule())
+        }
     var body: some Scene {
         WindowGroup {
             ContentView()
