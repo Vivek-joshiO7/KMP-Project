@@ -33,7 +33,7 @@ fun NewsScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Button(onClick = { showContent = !showContent }) {
-            Text("Click me!")
+            Text("Clicked!")
         }
         AnimatedVisibility(showContent) {
             val greeting = remember { Greeting().greet() }

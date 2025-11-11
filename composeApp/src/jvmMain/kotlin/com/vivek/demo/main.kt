@@ -12,6 +12,7 @@ fun main() = application {
     }
     Window(
         onCloseRequest = ::exitApplication,
+        alwaysOnTop = true,
         title = "KMP-Project",
     ) {
         App()
