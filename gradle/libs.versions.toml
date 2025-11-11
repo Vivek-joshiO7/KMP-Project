@@ -17,6 +17,8 @@ kotlinx-coroutines = "1.10.2"
 ktorClientCore = "3.3.1"
 koin="4.1.1"
 androidx-viewmodel = "1.10.2"
+navigationCompose = "2.9.1"
+serialization = "1.9.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -53,6 +55,10 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", versi
 koin-compose = {module="io.insert-koin:koin-compose", version.ref = "koin"}
 koin-compose-viewModel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-viewmodel" }
+
+# AndroidX Navigation Compose
+navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

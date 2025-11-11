@@ -53,6 +53,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
+            //navigation for compose multiplatform
+            implementation(libs.navigation.compose)
+            implementation(libs.serialization.json)
+
             //ktor client for networking
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
@@ -70,6 +74,7 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewModel)
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
