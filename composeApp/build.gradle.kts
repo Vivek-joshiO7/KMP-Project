@@ -44,6 +44,7 @@ kotlin {
     sourceSets {
 
         commonMain.dependencies {
+            //find latest compose multiplatform dependencies at https://klibs.io/
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -74,6 +75,11 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewModel)
+
+            //datastore preferences
+            api(libs.multiplatform.settings)
+            api(libs.multiplatform.settings.no.arg)
+
 
         }
         commonTest.dependencies {

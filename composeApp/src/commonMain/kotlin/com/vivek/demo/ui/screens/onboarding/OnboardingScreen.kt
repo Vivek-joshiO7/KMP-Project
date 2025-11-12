@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -32,7 +33,12 @@ import com.vivek.demo.ui.screens.onboarding.components.PageIndicator
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingScreen(navController: NavController) {
+fun OnboardingScreen(navController: NavController,viewModel: OnboardingViewModel) {
+    val userHasEntered = viewModel.userHasEntered.collectAsState()
+
+    if (userHasEntered.value) {
+        navController.navigate(Routes.NewsScreen)
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -86,8 +92,8 @@ fun OnboardingScreen(navController: NavController) {
                         onClick = {
                             scope.launch {
                                 if (pagerState.currentPage == pages.size) {
-                                    //navigate to home screen
-                                    navController.navigate(Routes.HomeScreen)
+                                    //save in local store that user has entered
+                                    viewModel.saveUserEntry(value = true)
                                 } else {
                                     pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                                 }

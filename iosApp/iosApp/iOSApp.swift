@@ -4,7 +4,7 @@ import shared
 @main
 struct iOSApp: App {
         startKoin {
-            modules(koinModule,sharedViewModelModule())
+            modules(koinModule, koinViewModelModule, sharedViewModelModule())
         }
     var body: some Scene {
         WindowGroup {

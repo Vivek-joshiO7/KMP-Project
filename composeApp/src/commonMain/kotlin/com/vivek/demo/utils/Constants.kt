@@ -8,4 +8,7 @@ object Constants {
 
     const val API_KEY = "e9f750d0bf6349449a6d5a04bd23f70b"
 
+    /**write here the multiplatform local Settings key**/
+    const val USER_ENTRY_KEY = "userEntry"
+
 }
