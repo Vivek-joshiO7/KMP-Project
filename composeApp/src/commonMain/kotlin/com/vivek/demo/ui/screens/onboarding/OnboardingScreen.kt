@@ -15,13 +15,17 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Constraints
 import androidx.navigation.NavController
+import com.russhwolf.settings.Settings
+import com.vivek.demo.domain.usecase.local_store_settings.UserEntryUseCases
 import com.vivek.demo.ui.Dimens.Medium_Padding_2
 import com.vivek.demo.ui.Dimens.Page_Indicator_Width
 import com.vivek.demo.ui.Dimens.Small_Padding_1
@@ -30,15 +34,14 @@ import com.vivek.demo.ui.screens.common.NewsButton
 import com.vivek.demo.ui.screens.common.NewsTextButton
 import com.vivek.demo.ui.screens.onboarding.components.OnboardingPage
 import com.vivek.demo.ui.screens.onboarding.components.PageIndicator
+import com.vivek.demo.utils.Constants
 import kotlinx.coroutines.launch
+import net.codinux.log.LogEvent
+import net.codinux.log.LogLevel
+import org.koin.compose.koinInject
 
 @Composable
 fun OnboardingScreen(navController: NavController,viewModel: OnboardingViewModel) {
-    val userHasEntered = viewModel.userHasEntered.collectAsState()
-
-    if (userHasEntered.value) {
-        navController.navigate(Routes.NewsScreen)
-    }
 
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -91,9 +94,12 @@ fun OnboardingScreen(navController: NavController,viewModel: OnboardingViewModel
                         text = buttonState.value[1],
                         onClick = {
                             scope.launch {
-                                if (pagerState.currentPage == pages.size) {
+                                if (pagerState.currentPage == pages.size-1) {
                                     //save in local store that user has entered
-                                    viewModel.saveUserEntry(value = true)
+                                    viewModel.saveUserEntry(value = true){
+                                        navController.navigate(Routes.NewsScreen)
+                                    }
+
                                 } else {
                                     pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                                 }

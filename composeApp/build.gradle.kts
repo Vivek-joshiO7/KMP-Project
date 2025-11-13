@@ -80,6 +80,11 @@ kotlin {
             api(libs.multiplatform.settings)
             api(libs.multiplatform.settings.no.arg)
 
+            //logging
+            implementation("net.codinux.log:log-data:1.1.0")
+
+            //toast
+//            implementation(libs.sonner)
 
         }
         commonTest.dependencies {

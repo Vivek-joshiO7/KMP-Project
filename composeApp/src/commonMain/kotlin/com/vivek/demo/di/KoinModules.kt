@@ -12,6 +12,7 @@ import com.vivek.demo.domain.usecase.GetNewsUseCase
 import com.vivek.demo.domain.usecase.local_store_settings.GetUserEntry
 import com.vivek.demo.domain.usecase.local_store_settings.SaveUserEntry
 import com.vivek.demo.domain.usecase.local_store_settings.UserEntryUseCases
+import com.vivek.demo.ui.screens.home.HomeViewModel
 import com.vivek.demo.ui.screens.news_screen.NewsViewModel
 import com.vivek.demo.ui.screens.onboarding.OnboardingViewModel
 import com.vivek.demo.utils.Constants
@@ -28,7 +29,7 @@ import org.koin.dsl.module
 
 val koinModule = module {
 
-    factory {
+    single {
         HttpClient {
             install(ContentNegotiation) {
                 json(
@@ -54,27 +55,30 @@ val koinModule = module {
         }
     }
 
-    factory<KtorApiService> {
+    single<KtorApiService> {
         KtorApiServiceImpl(ktorClient = get())
     }
 
-    factory<NewsRepo> {
+    single<NewsRepo> {
         NewsRepoImpl(ktorApiService = get())
     }
 
-    factory {
+    single {
         GetNewsUseCase(repo = get())
     }
-    factory <Settings> { Settings() }
 
-    factory<LocalUserManager> {
-        LocalUserManagerImpl(localStoreSetting = get())
+    single<LocalUserManager> {
+        LocalUserManagerImpl(localStoreSetting = Settings())
     }
+
+    single { GetUserEntry(get()) }
+
+    single { SaveUserEntry(get()) }
 
     single {
         UserEntryUseCases(
-            getUserEntry = GetUserEntry(get()),
-            saveUserEntry = SaveUserEntry(get())
+            getUserEntry = get(),
+            saveUserEntry = get()
         )
     }
 
@@ -82,6 +86,7 @@ val koinModule = module {
 }
 
 val koinViewModelModule = module {
+    viewModel { HomeViewModel(newsUseCase = get()) }
     viewModel { NewsViewModel(newsUseCase = get()) }
     viewModel { OnboardingViewModel(get()) }
 }
