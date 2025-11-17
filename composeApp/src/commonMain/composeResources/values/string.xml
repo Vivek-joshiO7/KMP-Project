@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
     <string name="app_name">Compose Multi-Platform App</string>
+    <string name="developer_name">Vivek Joshi</string>
+    <string name="profile_name">Android Developer</string>
     <string name="greeting_message">Welcome to the Compose Multi-Platform Application!</string>
     <string name="button_click_me">Click Me!</string>
     <string name="label_hello">Hello, World!</string>
+    <string name="dummy_desc">Hello users, this a small introduction to the world of Compose Multiplatform and the abilities of Kotlin Multiplatform Technologies</string>
 </resources>
