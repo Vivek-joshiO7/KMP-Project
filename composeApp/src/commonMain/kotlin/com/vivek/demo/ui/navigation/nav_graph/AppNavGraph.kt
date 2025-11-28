@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.vivek.demo.ui.navigation.routes.Routes
 import com.vivek.demo.ui.screens.home.HomeScreen
 import com.vivek.demo.ui.screens.home.HomeViewModel
+import com.vivek.demo.ui.screens.login.LoginScreen
 import com.vivek.demo.ui.screens.news_screen.NewsScreen
 import com.vivek.demo.ui.screens.onboarding.OnboardingScreen
 import com.vivek.demo.ui.screens.onboarding.OnboardingViewModel
@@ -19,7 +20,7 @@ fun AppNavGraph() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.SplashScreen
+        startDestination = Routes.LoginScreen
     ) {
         // Splash Screen
         composable<Routes.SplashScreen> {
@@ -44,6 +45,9 @@ fun AppNavGraph() {
 
         composable<Routes.NewsScreen> {
             NewsScreen()
+        }
+        composable<Routes.LoginScreen> {
+            LoginScreen()
         }
     }
 }

@@ -1,5 +1,8 @@
 This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM).
 
+UI in this project is referenced from  : https://www.figma.com/design/CfviRirZETl35qWpQhzDAH/News-App-UI-Kit--Community-?node-id=131-8644&t=S2NXSYWVbTxnLNzT-0
+
+
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
   - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
