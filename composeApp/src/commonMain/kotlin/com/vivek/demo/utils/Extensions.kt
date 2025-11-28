@@ -37,11 +37,11 @@ fun AnnotatedString.Builder.blueWhiteGradientText(text: String) {
     }
 }
 
-fun AnnotatedString.Builder.plainColorText(text: String, color: Color) {
+fun AnnotatedString.Builder.plainColorText(text: String, color: Color,fontSize : Int) {
     withStyle(
         style = SpanStyle(
             brush = Brush.linearGradient(listOf(color,color)),
-            fontSize = 48.sp,
+            fontSize = fontSize.sp,
             fontWeight = FontWeight.Bold
         )
     ) {
