@@ -36,9 +36,6 @@ import com.vivek.demo.ui.screens.onboarding.components.OnboardingPage
 import com.vivek.demo.ui.screens.onboarding.components.PageIndicator
 import com.vivek.demo.utils.Constants
 import kotlinx.coroutines.launch
-import net.codinux.log.LogEvent
-import net.codinux.log.LogLevel
-import org.koin.compose.koinInject
 
 @Composable
 fun OnboardingScreen(navController: NavController,viewModel: OnboardingViewModel) {

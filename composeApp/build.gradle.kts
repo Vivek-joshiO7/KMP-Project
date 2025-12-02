@@ -80,11 +80,15 @@ kotlin {
             api(libs.multiplatform.settings)
             api(libs.multiplatform.settings.no.arg)
 
-            //logging
-            implementation("net.codinux.log:log-data:1.1.0")
+            //constraints
+            implementation("tech.annexflow.compose:constraintlayout-compose-multiplatform:0.6.1")
 
-            //toast
-//            implementation(libs.sonner)
+            implementation("tech.annexflow.compose:constraintlayout-compose-multiplatform:0.6.1-shaded-core")
+
+            implementation("tech.annexflow.compose:constraintlayout-compose-multiplatform:0.6.1-shaded")
+
+
+            implementation("io.github.dokar3:sonner:0.3.8") //https://github.com/dokar3/compose-sonner
 
         }
         commonTest.dependencies {
